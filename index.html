@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediTrack</title>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <header class="header">
+        <div>
+            <p class="small-title">DAILY HEALTH MONITOR</p>
+            <h1>MediTrack</h1>
+            <p class="subtitle">
+                Pantau kebutuhan harianmu dengan mudah.
+            </p>
+        </div>
+
+        <div class="logo">♥</div>
+    </header>
+
+    <main>
+
+        <section class="card">
+            <h2>Data Pengguna</h2>
+
+            <div class="form-grid">
+
+                <div class="input-group">
+                    <label>Nama</label>
+                    <input type="text" id="nama"
+                           placeholder="Masukkan nama">
+                </div>
+
+                <div class="input-group">
+                    <label>Usia</label>
+                    <input type="number" id="usia"
+                           placeholder="Contoh: 16">
+                </div>
+
+                <div class="input-group">
+                    <label>Jenis Kelamin</label>
+
+                    <select id="gender">
+                        <option value="">Pilih jenis kelamin</option>
+                        <option value="Laki-laki">Laki-laki</option>
+                        <option value="Perempuan">Perempuan</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label>Tinggi Badan (cm)</label>
+
+                    <input type="number" id="tinggi"
+                           placeholder="Contoh: 165">
+                </div>
+
+                <div class="input-group">
+                    <label>Berat Badan (kg)</label>
+
+                    <input type="number" id="berat"
+                           placeholder="Contoh: 55">
+                </div>
+
+            </div>
+        </section>
+
+
+        <section class="card">
+
+            <div class="section-title">
+                <div>
+                    <h2>Kebutuhan Hari Ini</h2>
+                    <p>Masukkan aktivitas dan konsumsi hari ini.</p>
+                </div>
+            </div>
+
+            <div class="form-grid">
+
+                <div class="input-group">
+                    <label>Air Minum (liter)</label>
+
+                    <input type="number"
+                           id="air"
+                           step="0.1"
+                           placeholder="Contoh: 1.5">
+                </div>
+
+                <div class="input-group">
+                    <label>Tidur (jam)</label>
+
+                    <input type="number"
+                           id="tidur"
+                           step="0.5"
+                           placeholder="Contoh: 7">
+                </div>
+
+                <div class="input-group">
+                    <label>Aktivitas Fisik (menit)</label>
+
+                    <input type="number"
+                           id="aktivitas"
+                           placeholder="Contoh: 45">
+                </div>
+
+                <div class="input-group">
+                    <label>Buah & Sayur (porsi)</label>
+
+                    <input type="number"
+                           id="buahSayur"
+                           placeholder="Contoh: 4">
+                </div>
+
+                <div class="input-group">
+                    <label>Makan Utama (kali)</label>
+
+                    <input type="number"
+                           id="makan"
+                           placeholder="Contoh: 3">
+                </div>
+
+            </div>
+
+            <button onclick="checkHealth()">
+                Check My Needs
+            </button>
+
+        </section>
+
+
+        <section id="hasil" class="result-section hidden">
+
+            <div class="greeting">
+                <p>HASIL PEMERIKSAAN</p>
+
+                <h2>
+                    Halo, <span id="hasilNama"></span>!
+                </h2>
+
+                <p id="statusText"></p>
+            </div>
+
+
+            <div class="score-card">
+
+                <div class="score">
+                    <span id="score">0%</span>
+                    <small>Kebutuhan terpenuhi</small>
+                </div>
+
+                <div class="score-info">
+                    <h3>Status Hari Ini</h3>
+
+                    <p id="statusOverall"></p>
+                </div>
+
+            </div>
+
+
+            <div class="result-grid">
+
+                <div class="result-card">
+                    <div class="icon">💧</div>
+
+                    <h3>Air</h3>
+
+                    <p>
+                        <span id="airAktual"></span> /
+                        <span id="airTarget"></span> L
+                    </p>
+
+                    <span id="airStatus"
+                          class="status">
+                    </span>
+                </div>
+
+
+                <div class="result-card">
+                    <div class="icon">😴</div>
+
+                    <h3>Tidur</h3>
+
+                    <p>
+                        <span id="tidurAktual"></span> jam
+                    </p>
+
+                    <span id="tidurStatus"
+                          class="status">
+                    </span>
+                </div>
+
+
+                <div class="result-card">
+                    <div class="icon">🏃</div>
+
+                    <h3>Aktivitas</h3>
+
+                    <p>
+                        <span id="aktivitasAktual"></span> menit
+                    </p>
+
+                    <span id="aktivitasStatus"
+                          class="status">
+                    </span>
+                </div>
+
+
+                <div class="result-card">
+                    <div class="icon">🥗</div>
+
+                    <h3>Buah & Sayur</h3>
+
+                    <p>
+                        <span id="buahAktual"></span> porsi
+                    </p>
+
+                    <span id="buahStatus"
+                          class="status">
+                    </span>
+                </div>
+
+
+                <div class="result-card">
+                    <div class="icon">🍽️</div>
+
+                    <h3>Makan</h3>
+
+                    <p>
+                        <span id="makanAktual"></span> kali
+                    </p>
+
+                    <span id="makanStatus"
+                          class="status">
+                    </span>
+                </div>
+
+            </div>
+
+
+            <div class="suggestion">
+
+                <h3>💡 Saran MediTrack</h3>
+
+                <p id="saran"></p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer>
+        MediTrack • Daily Health Monitor
+    </footer>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
